@@ -11,6 +11,10 @@ import {NavBarComponent} from './nav/navbar.component'
 import {Error404Component} from './nav/404.component'
 
 import {
+    EntryThumbnailComponent,
+    EntryListComponent
+} from './entry/list/index'
+import {
     EntryComponent,
     CreateEditEntryComponent
 } from './entry/single/index'
@@ -27,7 +31,10 @@ import {
         NavBarComponent,
         Error404Component,
         EntryComponent,
-        CreateEditEntryComponent
+        CreateEditEntryComponent,
+        EntryThumbnailComponent,
+        EntryListComponent
+
     ],
     providers: [
         UserService,

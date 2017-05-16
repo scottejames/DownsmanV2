@@ -34,7 +34,6 @@ export class CreateEditEntryComponent {
         this.entry = this.entryService.getEntryById(+this.route.snapshot.params['id'])
 
 
-        console.log(this.entry);
         this.id = new FormControl('',Validators.required);
 
         this.hikeClass = new FormControl('',Validators.required);

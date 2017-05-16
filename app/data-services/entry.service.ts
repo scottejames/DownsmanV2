@@ -9,6 +9,9 @@ export class EntryService {
         return e;
     }
 
+    getEntries() {
+        return ENTRIES;
+    }
 }
 
 
