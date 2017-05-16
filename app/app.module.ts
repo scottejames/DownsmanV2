@@ -10,7 +10,7 @@ import {UserService} from './data-services/user.service'
 import {EntryService} from './data-services/entry.service'
 import {NavBarComponent} from './nav/navbar.component'
 import {Error404Component} from './nav/404.component'
-
+import {TeamRouteActivator} from './entry/single/entryActivator.service'
 import {
     EntryThumbnailComponent,
     EntryListComponent
@@ -39,6 +39,7 @@ import {
 
     ],
     providers: [
+        TeamRouteActivator,
         UserService,
         EntryService
     ],

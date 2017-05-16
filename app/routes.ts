@@ -1,5 +1,6 @@
 import {Routes} from '@angular/router'
 import {Error404Component} from "./nav/404.component";
+import {TeamRouteActivator} from './entry/single/entryActivator.service'
 
 import {
     EntryComponent,
@@ -14,9 +15,9 @@ import {DebugComponent} from "./debug/debug.component";
 export const appRoutes: Routes = [
     {path: '404',               component: Error404Component},
     {path: 'entries',           component: EntryListComponent},
-    {path: 'editEntry/:id',     component: CreateEditEntryComponent},
+    {path: 'editEntry/:id',     component: CreateEditEntryComponent,canActivate: [TeamRouteActivator]},
     {path: 'createEntry',       component: CreateEditEntryComponent},
-    {path: 'viewEntry/:id',     component: EntryComponent},
+    {path: 'viewEntry/:id',     component: EntryComponent,canActivate: [TeamRouteActivator]},
     {path: 'debug',             component: DebugComponent},
 
 
