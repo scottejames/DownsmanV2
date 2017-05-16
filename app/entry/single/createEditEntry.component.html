@@ -1,128 +1,201 @@
-<div>
-    <div *ngIf="this.entry">Edit</div>
-    <div *ngIf="!this.entry">Create</div>
-
-    <form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)" novalidate>
-        <div class="form-group">
-            <label for="class"> Hike Class: </label>
-            <input formControlName="class" id="class" type="text" class="form-control"
+<form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)" novalidate>
+    <h3> Hike Info </h3>
+    <div class="form-group row">
+        <label for="class" class="col-md-2 col-form-label"> Hike Class: </label>
+        <div class="col-md-4">
+            <input formControlName="class" id="class" type="text" class="form-control "
                    placeholder="what hike class..."/>
+        </div>
 
-            <label for="prefStartTime"> Prefered start time: </label>
+        <label for="prefStartTime" class="col-md-2 col-form-label"> Prefered start time: </label>
+        <div class="col-md-4">
+
             <input formControlName="prefStartTime" id="prefStartTime" type="text" class="form-control"
                    placeholder="what prefered start time..."/>
+        </div>
+    </div>
+    <h3> Team Info </h3>
+    <fieldset formGroupName="team">
+        <div class="form-group row">
+            <label for="TeamName" class="col-md-2 col-form-label"> Team Name: </label>
+            <div class="col-md-4">
 
-            <fieldset formGroupName="team">
-
-                <label for="TeamName"> Team Name: </label>
                 <input formControlName="name" id="TeamName" type="text" class="form-control"
                        placeholder="what prefered team name..."/>
+            </div>
 
-                <label for="ScoutGroup"> Scout Group: </label>
+            <label for="ScoutGroup" class="col-md-2 col-form-label"> Scout Group: </label>
+            <div class="col-md-4">
+
                 <input formControlName="group" id="ScoutGroup" type="text" class="form-control"
                        placeholder="what scout group..."/>
+            </div>
 
-                <label for="ScoutDistrict"> Scout District: </label>
+            <label for="ScoutDistrict" class="col-md-2 col-form-label"> Scout District: </label>
+            <div class="col-md-4">
+
                 <input formControlName="district" id="ScoutDistrict" type="text" class="form-control"
                        placeholder="what scout district..."/>
+            </div>
 
-                <label for="ScoutCounty"> Scout County: </label>
+            <label for="ScoutCounty" class="col-md-2 col-form-label"> Scout County: </label>
+            <div class="col-md-4">
+
                 <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
                        placeholder="what scout county..."/>
+            </div>
+        </div>
+        <h3> Team Members </h3>
+        <div class="form-group row">
 
-                <label for="StandardMobile"> Scout Standard Mobile: </label>
-                <input formControlName="standardMobile" id="StandardMobile" type="text" class="form-control"
-                       placeholder="what is the mobile number for the team..."/>
+            <fieldSet formArrayName="participants">
+                <div *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
+                     [formGroup]="participant">
+                    <label for="'name'+1" class="col-md-2 col-form-label"> Name </label>
+                    <div class="col-md-2">
 
-                <label for="EmergencyMobile"> Scout Emergency Mobile: </label>
-                <input formControlName="emergencyMobile" id="EmergencyMobile" type="text" class="form-control"
-                       placeholder="what is the emergency mobile number for the team...."/>
-
-                <fieldSet formArrayName="participants">
-                    <div *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
-                         [formGroup]="participant">
-                        <label for="'name'+1"> Name </label>
                         <input formControlName="name" id="'name'+1" type="text" class="form-control"
                                placeholder="Entrants Name..."/>
+                    </div>
 
-                        <label for="'dob'+1"> Date of birth </label>
+                    <label for="'dob'+1" class="col-md-2 col-form-label"> Date of birth </label>
+                    <div class="col-md-2">
+
                         <input formControlName="dob" id="'dob'+1" type="text" class="form-control"
                                placeholder="Entrants Date of Birth..."/>
+                    </div>
+                    <label for="'sex'+1" class="col-md-2 col-form-label"> Sex </label>
+                    <div class="col-md-2">
 
-                        <label for="'sex'+1"> Sex </label>
                         <input formControlName="sex" id="'sex'+1" type="text" class="form-control"
                                placeholder="Entrants sex..."/>
                     </div>
-                </fieldSet>
-            </fieldset>
-            <fieldSet formArray="serviceCrew">
-                <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
-                     [formGroup]="crew">
-                    <label for="'SCname'+1"> Name </label>
-                    <input formControlName="name" id="'SCname'+1" type="text" class="form-control"
-                           placeholder="Support Crew Name..."/>
-
-                    <label for="'SCmobile'+1"> Mobile </label>
-                    <input formControlName="mobile" id="'SCmobile'+1" type="text" class="form-control"
-                           placeholder="Support Crew Mobile..."/>
-
-                    <label for="'SCfrom'+1"> Supporting from where </label>
-                    <input formControlName="from" id="'SCfrom'+1" type="text" class="form-control"
-                           placeholder="from..."/>
-
-                    <label for="'SCto'+1"> Supporting to where </label>
-                    <input formControlName="to" id="'SCto'+1" type="text" class="form-control"
-                           placeholder="to..."/>
-
                 </div>
             </fieldSet>
-
-            <fieldset formGroupName="contactInfo">
-                <fieldset formGroupName="adminContact">
-                    <label for="ACname"> Admin Contact Name: </label>
-                    <input formControlName="name" id="ACname" type="text" class="form-control"
-                           placeholder="Admin Contact Name:..."/>
-
-                    <label for="ACaddress"> Admin Contact Address: </label>
-                    <input formControlName="address" id="ACaddress" type="text" class="form-control"
-                           placeholder="Admin Address Name:..."/>
-
-                    <label for="ACtelephone"> Admin Contact Telephone: </label>
-                    <input formControlName="telephone" id="ACtelephone" type="text" class="form-control"
-                           placeholder="Admin Contact Telephone:..."/>
-
-                    <label for="ACmobile"> Admin Contact Mobile Telephone: </label>
-                    <input formControlName="mobile" id="ACmobile" type="text" class="form-control"
-                           placeholder="Admin Contact Mobile:..."/>
-
-                    <label for="ACemail"> Admin Contact Email: </label>
-                    <input formControlName="email" id="ACemail" type="text" class="form-control"
-                           placeholder="Admin Contact Email:..."/>
-
-
-                </fieldset>
-                <fieldset formGroupName="emergencyContact">
-                    <label for="ECname"> Emergency Contact Name: </label>
-                    <input formControlName="name" id="ECname" type="text" class="form-control"
-                           placeholder="Emergency Contact Name:..."/>
-
-                    <label for="ECaddress"> Emergency Contact Address: </label>
-                    <input formControlName="address" id="ECaddress" type="text" class="form-control"
-                           placeholder="Emergency Contact Address..."/>
-
-                    <label for="ECtelephone"> Emergency Contact Telephone: </label>
-                    <input formControlName="telephone" id="ECtelephone" type="text" class="form-control"
-                           placeholder="Admin Contact Telephone:..."/>
-
-                    <label for="ECmobile"> Emergency Contact Mobile Telephone: </label>
-                    <input formControlName="mobile" id="ECmobile" type="text" class="form-control"
-                           placeholder="Admin Contact Mobile:..."/>
-
-                </fieldset>
-            </fieldset>
         </div>
+        <div class="form-group row">
 
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-    </form>
-</div>
+            <label for="StandardMobile" class="col-md-2 col-form-label"> Scout Standard Mobile: </label>
+            <div class="col-md-4">
+
+                <input formControlName="standardMobile" id="StandardMobile" type="text" class="form-control"
+                       placeholder="what is the mobile number for the team..."/>
+
+            </div>
+            <label for="EmergencyMobile" class="col-md-2 col-form-label"> Scout Emergency Mobile: </label>
+            <div class="col-md-4">
+
+                <input formControlName="emergencyMobile" id="EmergencyMobile" type="text" class="form-control"
+                       placeholder="what is the emergency mobile number for the team...."/>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <h3> Support Crew </h3>
+        <fieldSet formArray="serviceCrew">
+            <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
+                 [formGroup]="crew">
+                <label for="'SCname'+1" class="col-md-2 col-form-label"> Name </label>
+                <div class="col-md-4">
+
+                    <input formControlName="name" id="'SCname'+1" type="text" class="form-control"
+                           placeholder="Support Crew Name..."/>
+                </div>
+                <label for="'SCmobile'+1" class="col-md-2 col-form-label"> Mobile </label>
+                <div class="col-md-4">
+
+                    <input formControlName="mobile" id="'SCmobile'+1" type="text" class="form-control"
+                           placeholder="Support Crew Mobile..."/>
+                </div>
+
+                <label for="'SCfrom'+1" class="col-md-2 col-form-label"> Supporting from where </label>
+                <div class="col-md-4">
+
+                    <input formControlName="from" id="'SCfrom'+1" type="text" class="form-control"
+                           placeholder="from..."/>
+                </div>
+
+                <label for="'SCto'+1" class="col-md-2 col-form-label"> Supporting to where </label>
+                <div class="col-md-4">
+
+                    <input formControlName="to" id="'SCto'+1" type="text" class="form-control"
+                           placeholder="to..."/>
+                </div>
+
+            </div>
+        </fieldSet>
+    </div>
+    <div class="form-group row">
+        <h3> Admin contact Information </h3>
+        <fieldset formGroupName="contactInfo">
+            <div class="form-group row">
+
+                <fieldset formGroupName="adminContact">
+                    <label for="ACname" class="col-md-2 col-form-label"> Name: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="name" id="ACname" type="text" class="form-control"
+                               placeholder="Admin Contact Name:..."/>
+                    </div>
+                    <label for="ACaddress" class="col-md-2 col-form-label"> Address: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="address" id="ACaddress" type="text" class="form-control"
+                               placeholder="Admin Address Name:..."/>
+                    </div>
+                    <label for="ACtelephone" class="col-md-2 col-form-label"> Telephone: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="telephone" id="ACtelephone" type="text" class="form-control"
+                               placeholder="Admin Contact Telephone:..."/>
+                    </div>
+                    <label for="ACmobile" class="col-md-2 col-form-label"> Mobile Telephone: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="mobile" id="ACmobile" type="text" class="form-control"
+                               placeholder="Admin Contact Mobile:..."/>
+                    </div>
+                    <label for="ACemail" class="col-md-2 col-form-label"> Email: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="email" id="ACemail" type="text" class="form-control"
+                               placeholder="Admin Contact Email:..."/>
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="form-group row">
+                <h3> Home contact information </h3>
+                <fieldset formGroupName="emergencyContact">
+                    <label for="ECname" class="col-md-2 col-form-label">   Name: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="name" id="ECname" type="text" class="form-control"
+                               placeholder="Emergency Contact Name:..."/>
+                    </div>
+                    <label for="ECaddress" class="col-md-2 col-form-label">   Address: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="address" id="ECaddress" type="text" class="form-control"
+                               placeholder="Emergency Contact Address..."/>
+                    </div>
+                    <label for="ECtelephone" class="col-md-2 col-form-label">   Telephone: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="telephone" id="ECtelephone" type="text" class="form-control"
+                               placeholder="Admin Contact Telephone:..."/>
+                    </div>
+                    <label for="ECmobile" class="col-md-2 col-form-label">   Mobile Telephone: </label>
+                    <div class="col-md-4">
+
+                        <input formControlName="mobile" id="ECmobile" type="text" class="form-control"
+                               placeholder="Admin Contact Mobile:..."/>
+                    </div>
+                </fieldset>
+            </div>
+        </fieldset>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+</form>
