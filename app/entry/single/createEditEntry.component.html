@@ -29,6 +29,32 @@
                 <label for="ScoutCounty"> Scout County: </label>
                 <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
                        placeholder="what scout county..."/>
+
+                <label for="StandardMobile"> Scout Standard Mobile: </label>
+                <input formControlName="standardMobile" id="StandardMobile" type="text" class="form-control"
+                       placeholder="what is the mobile number for the team..."/>
+
+                <label for="EmergencyMobile"> Scout Emergency Mobile: </label>
+                <input formControlName="emergencyMobile" id="EmergencyMobile" type="text" class="form-control"
+                       placeholder="what is the emergency mobile number for the team...."/>
+
+                <fieldSet formArrayName="participants">
+                    <div *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
+                         [formGroup]="participant">
+                        <label for="'name'+1"> Name </label>
+                        <input formControlName="name" id="'name'+1" type="text" class="form-control"
+                               placeholder="Entrants Name..."/>
+
+                        <label for="'dob'+1"> Date of birth </label>
+                        <input formControlName="dob" id="'dob'+1" type="text" class="form-control"
+                               placeholder="Entrants Date of Birth..."/>
+
+                        <label for="'sex'+1"> Sex </label>
+                        <input formControlName="sex" id="'sex'+1" type="text" class="form-control"
+                               placeholder="Entrants sex..."/>
+                    </div>
+                </fieldSet>
+
             </fieldset>
         </div>
 

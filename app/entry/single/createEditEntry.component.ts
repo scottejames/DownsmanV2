@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {EntryService} from "../../data-services/entry.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IEntry} from "../../data-services/entry.model";
-import {FormGroup, FormControl, Form, Validators} from "@angular/forms";
+import {FormGroup, FormControl, Form, Validators, FormArray} from "@angular/forms";
 import {validateConfig} from "@angular/router/src/config";
 @Component ({
     templateUrl: '/app/entry/single/createEditEntry.component.html',
@@ -15,15 +15,15 @@ export class CreateEditEntryComponent {
     private entry: IEntry;
 
     entryForm: FormGroup;
+
+    // HEADING
     id: FormControl;
     hikeClass: FormControl;
     prefStartTime: FormControl;
 
+    // TEAM
     teamForm: FormGroup;
-    teamName: FormControl;
-    teamGroup : FormControl;
-    teamDistrict: FormControl;
-    teamCounty: FormControl;
+
 
     constructor(private entryService:EntryService,
                 private activeRoute: ActivatedRoute,
@@ -33,34 +33,50 @@ export class CreateEditEntryComponent {
     ngOnInit() {
         this.entry = this.entryService.getEntryById(+this.activeRoute.snapshot.params['id'])
 
-
-        this.id = new FormControl('',Validators.required);
-
-        this.hikeClass = new FormControl('',Validators.required);
-        this.prefStartTime = new FormControl('', Validators.required);
-
-        this.teamName = new FormControl('', Validators.required);
-        this.teamGroup = new FormControl('');
-        this.teamDistrict = new FormControl('');
-        this.teamCounty = new FormControl('');
-
+        var participantsArray =
         this.teamForm = new FormGroup({
-            name: this.teamName,
-            group: this.teamGroup,
-            district: this.teamDistrict,
-            county: this.teamCounty
+            name: new FormControl(''),
+            group: new FormControl(''),
+            district: new FormControl(''),
+            county: new FormControl('' ),
+            standardMobile: new FormControl(''),
+            emergencyMobile: new FormControl('' ),
+            participants: new FormArray([
+                new FormGroup({
+                    name: new FormControl(''),
+                    dob: new FormControl(''),
+                    sex: new FormControl('')
+                }),new FormGroup({
+                    name: new FormControl(''),
+                    dob: new FormControl(''),
+                    sex: new FormControl('')
+                }),new FormGroup({
+                    name: new FormControl(''),
+                    dob: new FormControl(''),
+                    sex: new FormControl('')
+                }),new FormGroup({
+                    name: new FormControl(''),
+                    dob: new FormControl(''),
+                    sex: new FormControl('')
+                })])
         })
 
         this.entryForm = new FormGroup({
-            id:this.id,
-            class: this.hikeClass,
-            prefStartTime: this.prefStartTime,
+            id:new FormControl('' ),
+            class: new FormControl('' ),
+            prefStartTime: new FormControl(''),
             team: this.teamForm
 
         })
+        // MAIN FORM FIN
+
         // Setup defaul values if we have specified an entry, this means we are using the form to edit
         if (this.entry)
             this.entryForm.patchValue(this.entry,);
+    }
+
+    createParticantFormGroup(){
+
     }
     save(values:IEntry){
         console.log(values);
@@ -69,7 +85,10 @@ export class CreateEditEntryComponent {
 
     }
     cancel(){
-        this.router.navigate(['/viewEntry',this.entry.id])
+        if (this.entry)
+             this.router.navigate(['/viewEntry',this.entry.id]);
+        else
+            this.router.navigate((['/entries']));
 
     }
 
