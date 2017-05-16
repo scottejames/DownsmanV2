@@ -14,8 +14,14 @@ export class EntryService {
     }
 
     addEntry(entry: IEntry){
-        entry.id = this.getNextId();
+        if (!entry.id) {
+            entry.id = this.getNextId();
+        } else {
+            this.delete(entry.id);
+        }
+
         ENTRIES.push(entry);
+
     }
     updateEntry(entry: IEntry){
         console.error("not implemented")
