@@ -12,6 +12,19 @@ export class EntryService {
     getEntries() {
         return ENTRIES;
     }
+
+    addEntry(entry: IEntry){
+        entry.id = this.getNextId();
+        ENTRIES.push(entry);
+    }
+    updateEntry(entry: IEntry){
+        console.error("not implemented")
+    }
+
+    private getNextId(): number {
+        const nextId = Math.max.apply(null, ENTRIES.map(s => s.id)) + 1;
+        return nextId
+    }
 }
 
 

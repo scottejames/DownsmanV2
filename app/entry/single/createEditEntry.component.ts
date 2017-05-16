@@ -1,7 +1,7 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {EntryService} from "../../data-services/entry.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {IEntry} from "../../data-services/entry.model";
 import {FormGroup, FormControl, Form, Validators} from "@angular/forms";
 import {validateConfig} from "@angular/router/src/config";
@@ -26,12 +26,12 @@ export class CreateEditEntryComponent {
     teamCounty: FormControl;
 
     constructor(private entryService:EntryService,
-                private route: ActivatedRoute){
-
+                private activeRoute: ActivatedRoute,
+                private router: Router){
     }
 
     ngOnInit() {
-        this.entry = this.entryService.getEntryById(+this.route.snapshot.params['id'])
+        this.entry = this.entryService.getEntryById(+this.activeRoute.snapshot.params['id'])
 
 
         this.id = new FormControl('',Validators.required);
@@ -62,8 +62,15 @@ export class CreateEditEntryComponent {
         if (this.entry)
             this.entryForm.patchValue(this.entry,);
     }
-    save(values:any){
+    save(values:IEntry){
         console.log(values);
+        this.entryService.addEntry(values);
+        this.router.navigate(['/entries'])
+
+    }
+    cancel(){
+        this.router.navigate(['/viewEntry',this.entry.id])
+
     }
 
 }
