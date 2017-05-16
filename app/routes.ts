@@ -9,6 +9,7 @@ import {
 import {
     EntryListComponent
 } from './entry/list/index'
+import {DebugComponent} from "./debug/debug.component";
 
 export const appRoutes: Routes = [
     {path: '404',               component: Error404Component},
@@ -16,6 +17,7 @@ export const appRoutes: Routes = [
     {path: 'editEntry/:id',     component: CreateEditEntryComponent},
     {path: 'createEntry',       component: CreateEditEntryComponent},
     {path: 'viewEntry/:id',     component: EntryComponent},
+    {path: 'debug',             component: DebugComponent},
 
 
     {path: '', redirectTo: '/entries', pathMatch: 'full'}

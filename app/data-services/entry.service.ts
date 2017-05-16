@@ -25,10 +25,14 @@ export class EntryService {
         const nextId = Math.max.apply(null, ENTRIES.map(s => s.id)) + 1;
         return nextId
     }
+
+    delete(id: number) {
+        ENTRIES = ENTRIES.filter(e=>e.id != id);
+    }
 }
 
 
-const ENTRIES :IEntry[] = [{
+var ENTRIES :IEntry[] = [{
     id: 1,
     class: 'S',
     prefStartTime: '10.00',

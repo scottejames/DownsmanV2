@@ -4,6 +4,7 @@ import {RouterModule} from '@angular/router'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {appRoutes} from './routes'
 
+import {DebugComponent} from './debug/debug.component'
 import {DownsmanAppComponent} from './downsman-app.component'
 import {UserService} from './data-services/user.service'
 import {EntryService} from './data-services/entry.service'
@@ -33,7 +34,8 @@ import {
         EntryComponent,
         CreateEditEntryComponent,
         EntryThumbnailComponent,
-        EntryListComponent
+        EntryListComponent,
+        DebugComponent
 
     ],
     providers: [

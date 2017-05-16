@@ -22,10 +22,14 @@ export class EntryComponent {
 
     }
     delete(){
-        console.log('delete')
+        if (confirm("Are you sure you want to delete this team?")){
+            this.entryService.delete(this.entry.id);
+            this.router.navigate(['/entries']);
+
+        }
     }
     edit(){
         console.log('edit')
-        this.router.navigate(['/editEntry',this.entry.id])
+        this.router.navigate(['/editEntry',this.entry.id]);
     }
 }
