@@ -2,7 +2,7 @@
     <div *ngIf="this.entry">Edit</div>
     <div *ngIf="!this.entry">Create</div>
 
-    <form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)"novalidate>
+    <form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)" novalidate>
         <div class="form-group">
             <label for="class"> Hike Class: </label>
             <input formControlName="class" id="class" type="text" class="form-control"
@@ -54,7 +54,71 @@
                                placeholder="Entrants sex..."/>
                     </div>
                 </fieldSet>
+            </fieldset>
+            <fieldSet formArray="serviceCrew">
+                <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
+                     [formGroup]="crew">
+                    <label for="'SCname'+1"> Name </label>
+                    <input formControlName="name" id="'SCname'+1" type="text" class="form-control"
+                           placeholder="Support Crew Name..."/>
 
+                    <label for="'SCmobile'+1"> Mobile </label>
+                    <input formControlName="mobile" id="'SCmobile'+1" type="text" class="form-control"
+                           placeholder="Support Crew Mobile..."/>
+
+                    <label for="'SCfrom'+1"> Supporting from where </label>
+                    <input formControlName="from" id="'SCfrom'+1" type="text" class="form-control"
+                           placeholder="from..."/>
+
+                    <label for="'SCto'+1"> Supporting to where </label>
+                    <input formControlName="to" id="'SCto'+1" type="text" class="form-control"
+                           placeholder="to..."/>
+
+                </div>
+            </fieldSet>
+
+            <fieldset formGroupName="contactInfo">
+                <fieldset formGroupName="adminContact">
+                    <label for="ACname"> Admin Contact Name: </label>
+                    <input formControlName="name" id="ACname" type="text" class="form-control"
+                           placeholder="Admin Contact Name:..."/>
+
+                    <label for="ACaddress"> Admin Contact Address: </label>
+                    <input formControlName="address" id="ACaddress" type="text" class="form-control"
+                           placeholder="Admin Address Name:..."/>
+
+                    <label for="ACtelephone"> Admin Contact Telephone: </label>
+                    <input formControlName="telephone" id="ACtelephone" type="text" class="form-control"
+                           placeholder="Admin Contact Telephone:..."/>
+
+                    <label for="ACmobile"> Admin Contact Mobile Telephone: </label>
+                    <input formControlName="mobile" id="ACmobile" type="text" class="form-control"
+                           placeholder="Admin Contact Mobile:..."/>
+
+                    <label for="ACemail"> Admin Contact Email: </label>
+                    <input formControlName="email" id="ACemail" type="text" class="form-control"
+                           placeholder="Admin Contact Email:..."/>
+
+
+                </fieldset>
+                <fieldset formGroupName="emergencyContact">
+                    <label for="ECname"> Emergency Contact Name: </label>
+                    <input formControlName="name" id="ECname" type="text" class="form-control"
+                           placeholder="Emergency Contact Name:..."/>
+
+                    <label for="ECaddress"> Emergency Contact Address: </label>
+                    <input formControlName="address" id="ECaddress" type="text" class="form-control"
+                           placeholder="Emergency Contact Address..."/>
+
+                    <label for="ECtelephone"> Emergency Contact Telephone: </label>
+                    <input formControlName="telephone" id="ECtelephone" type="text" class="form-control"
+                           placeholder="Admin Contact Telephone:..."/>
+
+                    <label for="ECmobile"> Emergency Contact Mobile Telephone: </label>
+                    <input formControlName="mobile" id="ECmobile" type="text" class="form-control"
+                           placeholder="Admin Contact Mobile:..."/>
+
+                </fieldset>
             </fieldset>
         </div>
 
