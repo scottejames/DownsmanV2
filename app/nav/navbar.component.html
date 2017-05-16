@@ -1,0 +1,27 @@
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" >Downsman</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a [routerLink] = "['/entries']"  routerLinkActive="active">My Entries</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['/entry/new']" routerLinkActive="active">Create Entry</a>
+                </li>
+
+            </ul>
+            <div class="navbar-header navbar-right">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a *ngIf="!userService.isAuthenticated()" [routerLink] = "['user/login']" routerLinkActive="active"> Login </a>
+                        <a *ngIf="userService.isAuthenticated()" [routerLink] = "['user/profile']" routerLinkActive="active"> Welcome {{userService.currentUser.firstName}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

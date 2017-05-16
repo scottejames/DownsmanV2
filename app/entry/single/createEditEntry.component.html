@@ -1,0 +1,38 @@
+<div>
+    <div *ngIf="this.entry">Edit</div>
+    <div *ngIf="!this.entry">Create</div>
+
+    <form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)"novalidate>
+        <div class="form-group">
+            <label for="class"> Hike Class: </label>
+            <input formControlName="class" id="class" type="text" class="form-control"
+                   placeholder="what hike class..."/>
+
+            <label for="prefStartTime"> Prefered start time: </label>
+            <input formControlName="prefStartTime" id="prefStartTime" type="text" class="form-control"
+                   placeholder="what prefered start time..."/>
+
+            <fieldset formGroupName="team">
+
+                <label for="TeamName"> Team Name: </label>
+                <input formControlName="name" id="TeamName" type="text" class="form-control"
+                       placeholder="what prefered team name..."/>
+
+                <label for="ScoutGroup"> Scout Group: </label>
+                <input formControlName="group" id="ScoutGroup" type="text" class="form-control"
+                       placeholder="what scout group..."/>
+
+                <label for="ScoutDistrict"> Scout District: </label>
+                <input formControlName="district" id="ScoutDistrict" type="text" class="form-control"
+                       placeholder="what scout district..."/>
+
+                <label for="ScoutCounty"> Scout County: </label>
+                <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
+                       placeholder="what scout county..."/>
+            </fieldset>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default">Cancel</button>
+    </form>
+</div>

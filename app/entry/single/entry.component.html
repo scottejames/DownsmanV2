@@ -1,0 +1,47 @@
+<div>
+    <div>
+        <h1> Name: {{entry.team.name}}</h1>
+        <h2> Hike Class : {{entry?.class}}</h2>
+
+        <h2> Entry information: </h2>
+        <div> Group: {{entry.team.group}}</div>
+        <div> District: {{entry.team.district}}</div>
+        <div> County {{entry.team.county}}</div>
+        <div> Standard Mobile: {{entry.team.standardMobile}}</div>
+        <div> Emergency Mobile: {{entry.team.emergencyMobile}}</div>
+        <hr>
+
+        <h2> Participants Information: </h2>
+        <div *ngFor="let particpant of entry.team.participants">
+            <div>Name: {{particpant.name}}</div>
+            <div>Date Of Birth: {{particpant.dob}} </div>
+            <div>Sex: {{particpant.sex}}</div>
+            <hr>
+        </div>
+
+        <h2> Service Crew: </h2>
+
+        <div *ngFor="let crew of entry.serviceCrew">
+            <div> Name: {{crew.name}}</div>
+            <div> Mobile: {{crew.mobile}}</div>
+            <div> From: {{crew.from}}</div>
+            <div> To: {{crew.to}}</div>
+            <hr>
+        </div>
+
+        <h2> Contact Information </h2>
+
+        <h3> Admin Contact : </h3>
+        <div> Name: {{entry.contactInfo.adminContact.name}}</div>
+        <div> Address: {{entry.contactInfo.adminContact.address}}</div>
+        <div> Telephone: {{entry.contactInfo.adminContact.telephone}}</div>
+        <div> Mobile: {{entry.contactInfo.adminContact.mobile}}</div>
+        <div> Email: {{entry.contactInfo.adminContact.email}}</div>
+
+        <h3> Emergency Contact </h3>
+        <div> Name: {{entry.contactInfo.emergencyContact.name}}</div>
+        <div> Address: {{entry.contactInfo.emergencyContact.address}}</div>
+        <div> Telephone: {{entry.contactInfo.emergencyContact.telephone}}</div>
+        <div> Mobile: {{entry.contactInfo.emergencyContact.mobile}}</div>
+    </div>
+</div>
