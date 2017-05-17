@@ -1,4 +1,13 @@
-<form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)" novalidate>
+<form [formGroup]="entryForm"  (ngSubmit)="save(entryForm.value)" novalidate>
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button *ngIf="isValidated()==false" type="button" class="btn" (click)="validateTeam()">Validate</button>
+        <button *ngIf="isValidated()==true" type="button" class="btn" (click)="invalidateTeam()">Invalidate</button>
+
+        <button type="button" class="btn" (click)="cancel()">Cancel</button>
+
+        <em class="pull-right" style="font-size: xx-large"> {{validatedString()}} </em>
+    </div>
     <h3> Hike Info </h3>
 
 
@@ -56,8 +65,8 @@
 
             <fieldSet formArrayName="participants">
                 <div
-                     *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
-                     [formGroup]="participant">
+                        *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
+                        [formGroup]="participant">
                     <label for="'name'+1" class="col-md-1  padding:10px "> Name </label>
                     <div class="col-md-4">
 
@@ -214,6 +223,5 @@
         </fieldset>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+
 </form>

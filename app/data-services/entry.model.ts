@@ -1,6 +1,7 @@
 
 export interface IEntry{
     id: number,
+    validated: boolean,
     class: string,
     prefStartTime: string,
     team: ITeam,

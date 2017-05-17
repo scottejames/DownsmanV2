@@ -23,6 +23,7 @@ export class CreateEditEntryComponent {
     hikeClasses: string[];
     entryForm: FormGroup;
 
+
     // HEADING
     id: FormControl;
 
@@ -35,6 +36,37 @@ export class CreateEditEntryComponent {
                 private activeRoute: ActivatedRoute,
                 private router: Router,
                 private refData: RefDataService) {
+    }
+
+    validatedString(): string {
+        if (this.isValidated())
+            return 'Team Is Validated';
+        else
+            return 'Team NOT Validated';
+
+    }
+
+    isValidated() {
+        if (this.entry && this.entry.validated) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    validateTeam() {
+        this.entry.validated = true;
+        this.entryService.addEntry(this.entry);
+        this.entryForm.disable();
+
+    }
+
+    invalidateTeam() {
+        this.entry.validated = false;
+        this.entryService.addEntry(this.entry);
+        this.entryForm.enable();
+
+
     }
 
     removeScout(i: number) {
@@ -93,6 +125,7 @@ export class CreateEditEntryComponent {
             }));
         return result;
     }
+
     removeSupport(i: number) {
         this.serviceForm.removeAt(i);
     }
@@ -142,6 +175,7 @@ export class CreateEditEntryComponent {
         })
         this.entryForm = new FormGroup({
             id: new FormControl(''),
+            validated: new FormControl(''),
             class: new FormControl(''),
             prefStartTime: new FormControl(''),
             team: this.teamForm,
@@ -149,9 +183,14 @@ export class CreateEditEntryComponent {
             contactInfo: this.contactForm
 
         })
+
         // Setup defaul values if we have specified an entry, this means we are using the form to edit
         if (this.entry)
             this.entryForm.setValue(this.entry,);
+
+        // if team is validated disable editing
+        if (this.entry.validated == true)
+            this.entryForm.disable();
     }
 
     createParticantFormGroup() {
