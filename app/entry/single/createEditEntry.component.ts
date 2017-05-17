@@ -27,7 +27,39 @@ export class CreateEditEntryComponent {
     constructor(private entryService: EntryService,
                 private activeRoute: ActivatedRoute,
                 private router: Router,
-                private refData:RefDataService) {
+                private refData: RefDataService) {
+    }
+    removeScout(i:number){
+        var scoutsControl = <FormArray>this.teamForm.get('participants');
+        scoutsControl.removeAt(i);
+    }
+    addScout() {
+        var scoutsControl = <FormArray>this.teamForm.get('participants');
+        scoutsControl.push(new FormGroup({
+            name: new FormControl(''),
+            dob: new FormControl(''),
+            gender: new FormControl('')
+        }))
+    }
+
+    buildParticipantFormArray(): FormArray {
+        var result: FormArray;
+
+        result = new FormArray([]);
+        if (this.entry)
+            for (let i of this.entry.team.participants)
+                result.push(new FormGroup({
+                    name: new FormControl(''),
+                    dob: new FormControl(''),
+                    gender: new FormControl('')
+                }));
+        else
+            result.push(new FormGroup({
+                name: new FormControl(''),
+                dob: new FormControl(''),
+                gender: new FormControl('')
+            }));
+        return result;
     }
 
     ngOnInit() {
@@ -41,24 +73,7 @@ export class CreateEditEntryComponent {
             county: new FormControl(''),
             standardMobile: new FormControl(''),
             emergencyMobile: new FormControl(''),
-            participants: new FormArray([
-                new FormGroup({
-                    name: new FormControl(''),
-                    dob: new FormControl(''),
-                    sex: new FormControl('')
-                }), new FormGroup({
-                    name: new FormControl(''),
-                    dob: new FormControl(''),
-                    sex: new FormControl('')
-                }), new FormGroup({
-                    name: new FormControl(''),
-                    dob: new FormControl(''),
-                    sex: new FormControl('')
-                }), new FormGroup({
-                    name: new FormControl(''),
-                    dob: new FormControl(''),
-                    sex: new FormControl('')
-                })])
+            participants: this.buildParticipantFormArray()
         })
 
         this.serviceForm = new FormArray([

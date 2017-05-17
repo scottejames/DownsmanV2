@@ -1,5 +1,7 @@
 <form [formGroup]="entryForm" (ngSubmit)="save(entryForm.value)" novalidate>
     <h3> Hike Info </h3>
+
+
     <div class="form-group row">
         <label for="class" class="col-md-2 col-form-label"> Hike Class: </label>
         <div class="col-md-4">
@@ -48,33 +50,40 @@
                        placeholder="what scout county..."/>
             </div>
         </div>
+
         <h3> Team Members </h3>
         <div class="form-group row">
 
             <fieldSet formArrayName="participants">
                 <div *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
                      [formGroup]="participant">
-                    <label for="'name'+1" class="col-md-2 col-form-label"> Name </label>
-                    <div class="col-md-2">
+                    <label for="'name'+1" class="col-md-1 col-form-label"> Name </label>
+                    <div class="col-md-4">
 
                         <input formControlName="name" id="'name'+1" type="text" class="form-control"
                                placeholder="Entrants Name..."/>
                     </div>
 
-                    <label for="'dob'+1" class="col-md-2 col-form-label"> Date of birth </label>
+                    <label for="'dob'+1" class="col-md-1 col-form-label"> Date of birth </label>
                     <div class="col-md-2">
 
                         <input formControlName="dob" id="'dob'+1" type="text" class="form-control"
                                placeholder="Entrants Date of Birth..."/>
                     </div>
-                    <label for="'sex'+1" class="col-md-2 col-form-label"> Sex </label>
+                    <label for="'gender'+1" class="col-md-1 col-form-label"> Sex </label>
                     <div class="col-md-2">
 
-                        <input formControlName="sex" id="'sex'+1" type="text" class="form-control"
-                               placeholder="Entrants sex..."/>
+                        <input formControlName="gender" id="'gender'+1" type="text" class="form-control"
+                               placeholder="Entrants gender..."/>
                     </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default" (click)="removeScout(i)">Del</button>
+                    </div>
+
                 </div>
             </fieldSet>
+            <button type="button" class="btn btn-default" (click)="addScout()">Add new member</button>
+
         </div>
         <div class="form-group row">
 
@@ -170,25 +179,25 @@
             <div class="form-group row">
                 <h3> Home contact information </h3>
                 <fieldset formGroupName="emergencyContact">
-                    <label for="ECname" class="col-md-2 col-form-label">   Name: </label>
+                    <label for="ECname" class="col-md-2 col-form-label"> Name: </label>
                     <div class="col-md-4">
 
                         <input formControlName="name" id="ECname" type="text" class="form-control"
                                placeholder="Emergency Contact Name:..."/>
                     </div>
-                    <label for="ECaddress" class="col-md-2 col-form-label">   Address: </label>
+                    <label for="ECaddress" class="col-md-2 col-form-label"> Address: </label>
                     <div class="col-md-4">
 
                         <input formControlName="address" id="ECaddress" type="text" class="form-control"
                                placeholder="Emergency Contact Address..."/>
                     </div>
-                    <label for="ECtelephone" class="col-md-2 col-form-label">   Telephone: </label>
+                    <label for="ECtelephone" class="col-md-2 col-form-label"> Telephone: </label>
                     <div class="col-md-4">
 
                         <input formControlName="telephone" id="ECtelephone" type="text" class="form-control"
                                placeholder="Admin Contact Telephone:..."/>
                     </div>
-                    <label for="ECmobile" class="col-md-2 col-form-label">   Mobile Telephone: </label>
+                    <label for="ECmobile" class="col-md-2 col-form-label"> Mobile Telephone: </label>
                     <div class="col-md-4">
 
                         <input formControlName="mobile" id="ECmobile" type="text" class="form-control"
