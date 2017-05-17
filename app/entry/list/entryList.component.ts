@@ -6,7 +6,7 @@ import {EntryService, IEntry} from '../../data-services/index'
 	<div>
 		<h1> My Entries </h1>
 	 	<hr/>
-	 	<div class="row">
+	 	<div *ngIf="entries" class="row">
 	 		<div *ngFor="let entry of entries" class="col-md-5">
 	 			<entry-thumbnail #thumbnail [entry]="entry"></entry-thumbnail>
 	 		</div>

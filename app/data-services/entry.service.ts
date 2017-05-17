@@ -1,19 +1,25 @@
 import {Injectable} from "@angular/core";
 import {IEntry} from './entry.model'
+import {UserService} from "./user.service";
 @Injectable()
 export class EntryService {
+    constructor(private userService: UserService) {
 
+    }
 
-    getEntryById(id: number) :IEntry{
+    getEntryById(id: number): IEntry {
         var e: any = ENTRIES.find(t => t.id === id);
         return e;
     }
 
-    getEntries() {
-        return ENTRIES;
+    getEntries(): IEntry[] {
+        if (this.userService.currentUser == null)
+            return null;
+        else
+            return ENTRIES.filter(e => e.ownerId === this.userService.currentUser.id);
     }
 
-    addEntry(entry: IEntry){
+    addEntry(entry: IEntry) {
         if (!entry.id) {
             entry.id = this.getNextId();
         } else {
@@ -23,7 +29,8 @@ export class EntryService {
         ENTRIES.push(entry);
 
     }
-    updateEntry(entry: IEntry){
+
+    updateEntry(entry: IEntry) {
         console.error("not implemented")
     }
 
@@ -33,13 +40,18 @@ export class EntryService {
     }
 
     delete(id: number) {
-        ENTRIES = ENTRIES.filter(e=>e.id != id);
+        ENTRIES = ENTRIES.filter(e => e.id != id);
+    }
+
+    _getAllEntries(){
+        return ENTRIES;
     }
 }
 
 
-var ENTRIES :IEntry[] = [{
+var ENTRIES: IEntry[] = [{
     id: 1,
+    ownerId: 1,
     validated: false,
     class: 'Downsman Open',
     prefStartTime: '10.00',

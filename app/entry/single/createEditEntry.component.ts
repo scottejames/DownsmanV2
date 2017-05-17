@@ -5,6 +5,8 @@ import {IEntry} from "../../data-services/entry.model";
 import {FormGroup, FormControl, Form, Validators, FormArray} from "@angular/forms";
 import {validateConfig} from "@angular/router/src/config";
 import {RefDataService} from "../../data-services/refData.service";
+import {UserService} from "../../data-services/user.service";
+import {userInfo} from "os";
 @Component({
     templateUrl: '/app/entry/single/createEditEntry.component.html',
     styles: [`
@@ -35,6 +37,7 @@ export class CreateEditEntryComponent {
     constructor(private entryService: EntryService,
                 private activeRoute: ActivatedRoute,
                 private router: Router,
+                private userService: UserService,
                 private refData: RefDataService) {
     }
 
@@ -175,6 +178,7 @@ export class CreateEditEntryComponent {
         })
         this.entryForm = new FormGroup({
             id: new FormControl(''),
+            ownerId: new FormControl(''),
             validated: new FormControl(''),
             class: new FormControl(''),
             prefStartTime: new FormControl(''),
@@ -199,6 +203,7 @@ export class CreateEditEntryComponent {
 
     save(values: IEntry) {
         console.log(values);
+        values.ownerId = this.userService.currentUser.id;
         this.entryService.addEntry(values);
         this.router.navigate(['/entries'])
 

@@ -13,17 +13,19 @@ import {
 import {DebugComponent} from "./debug/debug.component";
 import {LoginComponent} from "./user/login.component";
 import {ProfileComponent} from "./user/profile.component";
+import {LoggedInActivator} from "./entry/single/loggedInActivtor.service";
+import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.service";
 
 export const appRoutes: Routes = [
     {path: '404',               component: Error404Component},
-    {path: 'entries',           component: EntryListComponent},
-    {path: 'editEntry/:id',     component: CreateEditEntryComponent,canActivate: [TeamRouteActivator]},
-    {path: 'createEntry',       component: CreateEditEntryComponent},
-    {path: 'viewEntry/:id',     component: CreateEditEntryComponent,canActivate: [TeamRouteActivator]},
+    {path: 'entries',           component: EntryListComponent,canActivate: [LoggedInActivator]},
+    {path: 'editEntry/:id',     component: CreateEditEntryComponent,canActivate: [EntryNotOwnerActivator,LoggedInActivator,TeamRouteActivator]},
+    {path: 'viewEntry/:id',     component: CreateEditEntryComponent,canActivate: [EntryNotOwnerActivator,LoggedInActivator,TeamRouteActivator]},
+    {path: 'createEntry',       component: CreateEditEntryComponent,canActivate: [LoggedInActivator]},
     {path: 'debug',             component: DebugComponent},
 
     {path: 'user/login',        component: LoginComponent},
-    {path: 'user/profile',      component: ProfileComponent},
+    {path: 'user/profile',      component: ProfileComponent,canActivate: [LoggedInActivator]},
 
     {path: '', redirectTo: '/entries', pathMatch: 'full'}
 

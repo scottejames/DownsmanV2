@@ -22,6 +22,8 @@ import {
 import {RefDataService} from "./data-services/refData.service";
 import {LoginComponent} from "./user/login.component";
 import {ProfileComponent} from "./user/profile.component";
+import {LoggedInActivator} from "./entry/single/loggedInActivtor.service";
+import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.service";
 
 @NgModule({
     imports: [
@@ -44,6 +46,8 @@ import {ProfileComponent} from "./user/profile.component";
     ],
     providers: [
         TeamRouteActivator,
+        LoggedInActivator,
+        EntryNotOwnerActivator,
         UserService,
         EntryService,
         RefDataService

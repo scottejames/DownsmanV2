@@ -1,6 +1,7 @@
 
 export interface IEntry{
     id: number,
+    ownerId: number,
     validated: boolean,
     class: string,
     prefStartTime: string,
