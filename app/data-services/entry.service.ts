@@ -52,19 +52,19 @@ var ENTRIES :IEntry[] = [{
         participants: [{
             name: 'Tom',
             dob: '1 Jan 2010',
-            sex: 'male'
+            gender: 'male'
         }, {
             name: 'Dick',
             dob: '1 Jan 2010',
-            sex: 'male'
+            gender: 'male'
         }, {
             name: 'Harry',
             dob: '1 Jan 2010',
-            sex: 'male'
+            gender: 'male'
         }, {
             name: 'Joan',
             dob: '1 Jan 2010',
-            sex: 'female'
+            gender: 'female'
         }]
     },
     serviceCrew: [{

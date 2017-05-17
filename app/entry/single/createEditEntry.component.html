@@ -2,7 +2,7 @@
     <h3> Hike Info </h3>
 
 
-    <div class="form-group row">
+    <div class="row">
         <label for="class" class="col-md-2 "> Hike Class: </label>
         <div class="col-md-4">
 
@@ -21,43 +21,41 @@
     </div>
     <h3> Team Info </h3>
     <fieldset formGroupName="team">
-        <div class="form-group row">
-            <div class="panel-body">
-                <label for="TeamName" class="col-md-2 "> Team Name: </label>
-                <div class="col-md-4">
+        <div class="row">
+            <label for="TeamName" class="col-md-2 "> Team Name: </label>
+            <div class="col-md-4">
 
-                    <input formControlName="name" id="TeamName" type="text" class="form-control"
-                           placeholder="what prefered team name..."/>
-                </div>
+                <input formControlName="name" id="TeamName" type="text" class="form-control"
+                       placeholder="what prefered team name..."/>
+            </div>
 
-                <label for="ScoutGroup" class="col-md-2 "> Scout Group: </label>
-                <div class="col-md-4">
+            <label for="ScoutGroup" class="col-md-2 "> Scout Group: </label>
+            <div class="col-md-4">
 
-                    <input formControlName="group" id="ScoutGroup" type="text" class="form-control"
-                           placeholder="what scout group..."/>
-                </div>
+                <input formControlName="group" id="ScoutGroup" type="text" class="form-control"
+                       placeholder="what scout group..."/>
+            </div>
 
-                <label for="ScoutDistrict" class="col-md-2 "> Scout District: </label>
-                <div class="col-md-4">
+            <label for="ScoutDistrict" class="col-md-2 "> Scout District: </label>
+            <div class="col-md-4">
 
-                    <input formControlName="district" id="ScoutDistrict" type="text" class="form-control"
-                           placeholder="what scout district..."/>
-                </div>
+                <input formControlName="district" id="ScoutDistrict" type="text" class="form-control"
+                       placeholder="what scout district..."/>
+            </div>
 
-                <label for="ScoutCounty" class="col-md-2 "> Scout County: </label>
-                <div class="col-md-4">
+            <label for="ScoutCounty" class="col-md-2 "> Scout County: </label>
+            <div class="col-md-4">
 
-                    <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
-                           placeholder="what scout county..."/>
-                </div>
+                <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
+                       placeholder="what scout county..."/>
             </div>
         </div>
 
         <h3> Team Members </h3>
-        <div class="form-group row">
+        <div class=" row">
 
             <fieldSet formArrayName="participants">
-                <div class="panel-body"
+                <div
                      *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
                      [formGroup]="participant">
                     <label for="'name'+1" class="col-md-1  padding:10px "> Name </label>
@@ -88,7 +86,7 @@
             <button type="button" class="btn btn-default" (click)="addScout()">Add new member</button>
 
         </div>
-        <div class="form-group row">
+        <div class="row">
 
             <label for="StandardMobile" class="col-md-2 "> Scout Standard Mobile: </label>
             <div class="col-md-4">
@@ -105,10 +103,10 @@
             </div>
         </div>
     </fieldset>
-    <div class="form-group row">
+    <div class="row">
         <h3> Support Crew </h3>
         <fieldSet formArray="serviceCrew">
-            <div class="panel-body">
+            <div>
 
                 <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
                      [formGroup]="crew">
@@ -145,10 +143,10 @@
             </div>
         </fieldSet>
     </div>
-    <div class="form-group row">
+    <div class=" row">
         <h3> Admin contact Information </h3>
         <fieldset formGroupName="contactInfo">
-            <div class="form-group row">
+            <div class=" row">
 
                 <fieldset formGroupName="adminContact">
                     <label for="ACname" class="col-md-2 "> Name: </label>
@@ -184,7 +182,7 @@
 
                 </fieldset>
             </div>
-            <div class="form-group row">
+            <div class="row">
                 <h3> Home contact information </h3>
                 <fieldset formGroupName="emergencyContact">
                     <label for="ECname" class="col-md-2 "> Name: </label>

@@ -22,7 +22,7 @@ export interface ITeam{
 export interface IParticipant{
     name: string,
     dob: string,
-    sex: string
+    gender: string
 }
 
 export interface IServiceCrew{
