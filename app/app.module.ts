@@ -20,6 +20,8 @@ import {
     CreateEditEntryComponent
 } from './entry/single/index'
 import {RefDataService} from "./data-services/refData.service";
+import {LoginComponent} from "./user/login.component";
+import {ProfileComponent} from "./user/profile.component";
 
 @NgModule({
     imports: [
@@ -36,8 +38,9 @@ import {RefDataService} from "./data-services/refData.service";
         CreateEditEntryComponent,
         EntryThumbnailComponent,
         EntryListComponent,
-        DebugComponent
-
+        DebugComponent,
+        LoginComponent,
+        ProfileComponent
     ],
     providers: [
         TeamRouteActivator,

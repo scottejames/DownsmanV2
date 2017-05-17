@@ -189,7 +189,7 @@ export class CreateEditEntryComponent {
             this.entryForm.setValue(this.entry,);
 
         // if team is validated disable editing
-        if (this.entry.validated == true)
+        if (this.entry && this.entry.validated == true)
             this.entryForm.disable();
     }
 
@@ -203,12 +203,16 @@ export class CreateEditEntryComponent {
         this.router.navigate(['/entries'])
 
     }
+    delete(){
+        if (confirm("Are you sure you want to delete this team?")){
+            this.entryService.delete(this.entry.id);
+            this.router.navigate(['/entries']);
 
+        }
+    }
     cancel() {
-        if (this.entry)
-            this.router.navigate(['/viewEntry', this.entry.id]);
-        else
-            this.router.navigate((['/entries']));
+
+        this.router.navigate((['/entries']));
 
     }
 
