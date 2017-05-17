@@ -18,7 +18,7 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <a *ngIf="!userService.isAuthenticated()" [routerLink] = "['user/login']" routerLinkActive="active"> Login </a>
-                        <a *ngIf="userService.isAuthenticated()" [routerLink] = "['user/profile']" routerLinkActive="active"> Welcome {{userService.currentUser.firstName}}</a>
+                        <a *ngIf="userService.isAuthenticated()" [routerLink] = "['user/profile']" routerLinkActive="active"> Welcome {{userService.getCurrentUser().firstName}}</a>
                     </li>
                 </ul>
             </div>

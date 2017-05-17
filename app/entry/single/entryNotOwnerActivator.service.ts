@@ -14,7 +14,7 @@ export class EntryNotOwnerActivator implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot) {
         const entryOwnerID = this.entryService.getEntryById(+route.params['id']).ownerId;
-        const currentUserID = this.userService.currentUser.id;
+        const currentUserID = this.userService.getCurrentUser().id;
         console.log('')
         if (entryOwnerID != currentUserID) {
             this.router.navigate(['/entries']);

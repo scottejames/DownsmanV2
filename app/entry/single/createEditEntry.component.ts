@@ -203,7 +203,7 @@ export class CreateEditEntryComponent {
 
     save(values: IEntry) {
         console.log(values);
-        values.ownerId = this.userService.currentUser.id;
+        values.ownerId = this.userService.getCurrentUser().id;
         this.entryService.addEntry(values);
         this.router.navigate(['/entries'])
 

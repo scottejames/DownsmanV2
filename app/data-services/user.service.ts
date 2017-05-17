@@ -3,11 +3,12 @@ import {IUser} from "./user.model";
 
 @Injectable()
 export class UserService {
-    currentUser: IUser;
+    private currentUser: IUser;
 
     // Hack to save having to login every time I test
     constructor(){
         // hack to save having to login every time.
+        console.log('Setting current user to (1) to save logging in.....')
         this.currentUser = this.getUserById(1);
     }
 
@@ -22,7 +23,9 @@ export class UserService {
         return user;
     }
 
-
+    getCurrentUser(){
+        return this.currentUser;
+    }
 
     loginUser(userName: string, password: string) {
         // Check password later.

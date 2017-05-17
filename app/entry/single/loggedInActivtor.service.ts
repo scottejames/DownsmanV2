@@ -11,7 +11,7 @@ export class LoggedInActivator implements CanActivate{
     }
     canActivate(route: ActivatedRouteSnapshot) {
 
-        const loggedIn = !(this.userService.currentUser === null);
+        const loggedIn = !(this.userService.getCurrentUser() === null);
 
         if (!loggedIn)
             this.router.navigate(['/user/login']);

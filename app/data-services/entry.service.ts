@@ -13,10 +13,10 @@ export class EntryService {
     }
 
     getEntries(): IEntry[] {
-        if (this.userService.currentUser == null)
+        if (this.userService.getCurrentUser() == null)
             return null;
         else
-            return ENTRIES.filter(e => e.ownerId === this.userService.currentUser.id);
+            return ENTRIES.filter(e => e.ownerId === this.userService.getCurrentUser().id);
     }
 
     addEntry(entry: IEntry) {
