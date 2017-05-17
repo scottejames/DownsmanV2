@@ -47,16 +47,17 @@
 
             <label for="ScoutDistrict" class="col-md-2 "> Scout District: </label>
             <div class="col-md-4">
+                <select formControlName="district" required id="ScoutDistrict" type="text" class="form-control">
+                    <option *ngFor="let c of refData.getDistrictList()" value="{{c}}">{{c}}</option>
+                </select>
 
-                <input formControlName="district" id="ScoutDistrict" type="text" class="form-control"
-                       placeholder="what scout district..."/>
             </div>
 
             <label for="ScoutCounty" class="col-md-2 "> Scout County: </label>
             <div class="col-md-4">
-
-                <input formControlName="county" id="ScoutCounty" type="text" class="form-control"
-                       placeholder="what scout county..."/>
+                <select formControlName="county" required id="ScoutCounty" type="text" class="form-control">
+                    <option *ngFor="let c of refData.getCountyList()" value="{{c}}">{{c}}</option>
+                </select>
             </div>
         </div>
 
@@ -65,24 +66,24 @@
 
             <fieldSet formArrayName="participants">
                 <div
-                        *ngFor="let participant of entryForm.get('team.participants').controls; let i=index"
+                        *ngFor="let participant of entryForm.get('team.participants').controls; let l=index"
                         [formGroup]="participant">
-                    <label for="'name'+1" class="col-md-1  padding:10px "> Name </label>
-                    <div class="col-md-4">
+                    <label for="'name'+l" class="col-md-1"> Name </label>
+                    <div class="col-md-3">
 
-                        <input formControlName="name" id="'name'+1" type="text" class="form-control"
+                        <input formControlName="name" id="'name'+l" type="text" class="form-control"
                                placeholder="Entrants Name..."/>
                     </div>
 
-                    <label for="'dob'+1" class="col-md-1  padding:10px"> Date of birth </label>
-                    <div class="col-md-2">
+                    <label for="'dob'+l" class="col-md-1"> Date of birth </label>
+                    <div class="col-md-3">
 
-                        <input formControlName="dob" id="'dob'+1" type="text" class="form-control"
+                        <input formControlName="dob" id="'dob'+l" type="date" class="form-control"
                                placeholder="Entrants Date of Birth..."/>
                     </div>
-                    <label for="'gender'+1" class="col-md-1  padding:10px"> Gender </label>
+                    <label for="'gender'+l" class="col-md-1  padding:10px"> Gender </label>
                     <div class="col-md-2">
-                        <select formControlName="gender" required id="gender" type="text" class="form-control">
+                        <select formControlName="gender" required id="'gender'+l" type="text" class="form-control">
                             <option *ngFor="let g of refData.getGenderList()" value="{{g}}">{{g}}</option>
                         </select>
                     </div>
@@ -119,30 +120,30 @@
 
                 <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
                      [formGroup]="crew">
-                    <label for="'SCname'+1" class="col-md-1"> Name </label>
+                    <label for="'SCname'+i" class="col-md-1"> Name </label>
                     <div class="col-md-2">
 
-                        <input formControlName="name" id="'SCname'+1" type="text" class="form-control"
+                        <input formControlName="name" id="'SCname'+i" type="text" class="form-control"
                                placeholder="Support Crew Name..."/>
                     </div>
-                    <label for="'SCmobile'+1" class="col-md-1"> Mobile </label>
+                    <label for="'SCmobile'+i" class="col-md-1"> Mobile </label>
                     <div class="col-md-2">
 
-                        <input formControlName="mobile" id="'SCmobile'+1" type="text" class="form-control"
+                        <input formControlName="mobile" id="'SCmobile'+i" type="text" class="form-control"
                                placeholder="Support Crew Mobile..."/>
                     </div>
 
-                    <label for="'SCfrom'+1" class="col-md-1"> Supporting from where </label>
+                    <label for="'SCfrom'+i" class="col-md-1"> Supporting from where </label>
                     <div class="col-md-1">
 
-                        <input formControlName="from" id="'SCfrom'+1" type="text" class="form-control"
+                        <input formControlName="from" id="'SCfrom'+i" type="text" class="form-control"
                                placeholder="from..."/>
                     </div>
 
-                    <label for="'SCto'+1" class="col-md-1"> Supporting to where </label>
+                    <label for="'SCto'+i" class="col-md-1"> Supporting to where </label>
                     <div class="col-md-1">
 
-                        <input formControlName="to" id="'SCto'+1" type="text" class="form-control"
+                        <input formControlName="to" id="'SCto'+i" type="text" class="form-control"
                                placeholder="to..."/>
                     </div>
                     <button type="button" class="btn btn-default" (click)="removeSupport(i)">Del</button>

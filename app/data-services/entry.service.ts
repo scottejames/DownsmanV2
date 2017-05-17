@@ -59,24 +59,24 @@ var ENTRIES: IEntry[] = [{
         name: 'hatters',
         group: '10th haywards heath',
         district: 'mid sussex',
-        county: 'sussex',
+        county: 'West Sussex',
         standardMobile: '011111',
         emergencyMobile: '100000',
         participants: [{
             name: 'Tom',
-            dob: '1 Jan 2010',
+            dob: '2003-05-12',
             gender: 'male'
         }, {
             name: 'Dick',
-            dob: '1 Jan 2010',
+            dob: '2002-11-12',
             gender: 'male'
         }, {
             name: 'Harry',
-            dob: '1 Jan 2010',
+            dob: '2003-10-12',
             gender: 'male'
         }, {
             name: 'Joan',
-            dob: '1 Jan 2010',
+            dob: '2003-05-14',
             gender: 'female'
         }]
     },
@@ -121,19 +121,19 @@ var ENTRIES: IEntry[] = [{
         emergencyMobile: '100000',
         participants: [{
             name: 'Tom',
-            dob: '1 Jan 2010',
+            dob: '2003-05-12',
             gender: 'male'
         }, {
             name: 'Dick',
-            dob: '1 Jan 2010',
+            dob: '2002-11-12',
             gender: 'male'
         }, {
             name: 'Harry',
-            dob: '1 Jan 2010',
+            dob: '2003-10-12',
             gender: 'male'
         }, {
             name: 'Joan',
-            dob: '1 Jan 2010',
+            dob: '2003-05-14',
             gender: 'female'
         }]
     },
@@ -178,19 +178,19 @@ var ENTRIES: IEntry[] = [{
         emergencyMobile: '100000',
         participants: [{
             name: 'Tom',
-            dob: '1 Jan 2010',
+            dob: '2003-05-12',
             gender: 'male'
         }, {
             name: 'Dick',
-            dob: '1 Jan 2010',
+            dob: '2002-11-12',
             gender: 'male'
         }, {
             name: 'Harry',
-            dob: '1 Jan 2010',
+            dob: '2003-10-12',
             gender: 'male'
         }, {
             name: 'Joan',
-            dob: '1 Jan 2010',
+            dob: '2003-05-14',
             gender: 'female'
         }]
     },
@@ -235,19 +235,19 @@ var ENTRIES: IEntry[] = [{
         emergencyMobile: '100000',
         participants: [{
             name: 'Tom',
-            dob: '1 Jan 2010',
+            dob: '2003-05-12',
             gender: 'male'
         }, {
             name: 'Dick',
-            dob: '1 Jan 2010',
+            dob: '2002-11-12',
             gender: 'male'
         }, {
             name: 'Harry',
-            dob: '1 Jan 2010',
+            dob: '2003-10-12',
             gender: 'male'
         }, {
             name: 'Joan',
-            dob: '1 Jan 2010',
+            dob: '2003-05-14',
             gender: 'female'
         }]
     },
@@ -292,19 +292,19 @@ var ENTRIES: IEntry[] = [{
         emergencyMobile: '100000',
         participants: [{
             name: 'Tom',
-            dob: '1 Jan 2010',
+            dob: '2003-05-12',
             gender: 'male'
         }, {
             name: 'Dick',
-            dob: '1 Jan 2010',
+            dob: '2002-11-12',
             gender: 'male'
         }, {
             name: 'Harry',
-            dob: '1 Jan 2010',
+            dob: '2003-10-12',
             gender: 'male'
         }, {
             name: 'Joan',
-            dob: '1 Jan 2010',
+            dob: '2003-05-14',
             gender: 'female'
         }]
     },

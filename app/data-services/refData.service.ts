@@ -8,8 +8,29 @@ export class RefDataService {
   getGenderList():string[]{
       return GENDER;
   }
+  getDistrictList(): string []{
+      return DISTRICTS;
+  }
+  getCountyList(): string [] {
+      return COUNTY;
+  }
 }
-
+const COUNTY: string [] = [
+    'West Sussex'
+]
+const DISTRICTS : string [] = [
+    'Adur Valley',
+    'Arundel & Littlehampton',
+    'Bognor Regis',
+    'Chichester',
+    'Crawley',
+    'East Grinstead',
+    'Horsham Weald',
+    'Horsham West',
+    'Mid Sussex',
+    'Petworth & Pulborough',
+    'Worthing'
+]
 const GENDER : string[] = [
     "male",
     "female"
