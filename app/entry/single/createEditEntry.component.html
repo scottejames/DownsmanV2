@@ -82,9 +82,9 @@
                     </div>
                     <label for="'gender'+1" class="col-md-1  padding:10px"> Gender </label>
                     <div class="col-md-2">
-
-                        <input formControlName="gender" id="'gender'+1" type="text" class="form-control"
-                               placeholder="Entrants gender..."/>
+                        <select formControlName="gender" required id="gender" type="text" class="form-control">
+                            <option *ngFor="let g of refData.getGenderList()" value="{{g}}">{{g}}</option>
+                        </select>
                     </div>
                     <div class="col-md-1">
                         <button type="button" class="btn btn-default" (click)="removeScout(i)">Del</button>
