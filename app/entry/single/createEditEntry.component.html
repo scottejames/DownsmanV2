@@ -3,8 +3,11 @@
     <div class="form-group row">
         <label for="class" class="col-md-2 col-form-label"> Hike Class: </label>
         <div class="col-md-4">
-            <input formControlName="class" id="class" type="text" class="form-control "
-                   placeholder="what hike class..."/>
+
+
+            <select formControlName="class" required id="class" type="text" class="form-control">
+                <option *ngFor="let c of hikeClasses" value="{{c}}">{{c}}</option>
+            </select>
         </div>
 
         <label for="prefStartTime" class="col-md-2 col-form-label"> Prefered start time: </label>

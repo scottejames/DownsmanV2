@@ -19,6 +19,7 @@ import {
     EntryComponent,
     CreateEditEntryComponent
 } from './entry/single/index'
+import {RefDataService} from "./data-services/refData.service";
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import {
     providers: [
         TeamRouteActivator,
         UserService,
-        EntryService
+        EntryService,
+        RefDataService
     ],
     bootstrap: [DownsmanAppComponent]
 

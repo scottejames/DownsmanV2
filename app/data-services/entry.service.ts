@@ -40,7 +40,7 @@ export class EntryService {
 
 var ENTRIES :IEntry[] = [{
     id: 1,
-    class: 'S',
+    class: 'Downsman Open',
     prefStartTime: '10.00',
     team: {
         name: 'hatters',

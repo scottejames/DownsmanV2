@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IEntry} from "../../data-services/entry.model";
 import {FormGroup, FormControl, Form, Validators, FormArray} from "@angular/forms";
 import {validateConfig} from "@angular/router/src/config";
+import {RefDataService} from "../../data-services/refData.service";
 @Component({
     templateUrl: '/app/entry/single/createEditEntry.component.html',
 
@@ -12,7 +13,7 @@ import {validateConfig} from "@angular/router/src/config";
 export class CreateEditEntryComponent {
 
     private entry: IEntry;
-
+    hikeClasses: string[];
     entryForm: FormGroup;
 
     // HEADING
@@ -25,11 +26,13 @@ export class CreateEditEntryComponent {
 
     constructor(private entryService: EntryService,
                 private activeRoute: ActivatedRoute,
-                private router: Router) {
+                private router: Router,
+                private refData:RefDataService) {
     }
 
     ngOnInit() {
         this.entry = this.entryService.getEntryById(+this.activeRoute.snapshot.params['id'])
+        this.hikeClasses = this.refData.getHikeClasses();
 
         this.teamForm = new FormGroup({
             name: new FormControl(''),
