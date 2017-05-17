@@ -7,7 +7,14 @@ import {validateConfig} from "@angular/router/src/config";
 import {RefDataService} from "../../data-services/refData.service";
 @Component({
     templateUrl: '/app/entry/single/createEditEntry.component.html',
-
+    styles: [`
+        em {float:right; color:#E05C65; padding-left:10px;}    
+        .error input {background-color: #E05C65}
+        .error ::-webkit-input-placeholder{color:#999;}
+        .error ::-moz-placeholder {color:#999;}
+        .error :-moz-placeholder {color:#999;}
+        .error :-ms-input-placeholder {color:#999;}
+        `]
 })
 
 export class CreateEditEntryComponent {
@@ -29,10 +36,12 @@ export class CreateEditEntryComponent {
                 private router: Router,
                 private refData: RefDataService) {
     }
-    removeScout(i:number){
+
+    removeScout(i: number) {
         var scoutsControl = <FormArray>this.teamForm.get('participants');
         scoutsControl.removeAt(i);
     }
+
     addScout() {
         var scoutsControl = <FormArray>this.teamForm.get('participants');
         scoutsControl.push(new FormGroup({
@@ -62,6 +71,42 @@ export class CreateEditEntryComponent {
         return result;
     }
 
+    buildSupportFormArray(): FormArray {
+        var result: FormArray;
+        result = new FormArray([]);
+
+        if (this.entry)
+            for (let i of this.entry.serviceCrew) {
+                result.push(new FormGroup({
+                    name: new FormControl(''),
+                    mobile: new FormControl(''),
+                    from: new FormControl(''),
+                    to: new FormControl('')
+                }));
+            }
+        else
+            result.push(new FormGroup({
+                name: new FormControl(''),
+                mobile: new FormControl(''),
+                from: new FormControl(''),
+                to: new FormControl('')
+            }));
+        return result;
+    }
+    removeSupport(i: number) {
+        this.serviceForm.removeAt(i);
+    }
+
+    addSupport() {
+
+        this.serviceForm.push(new FormGroup({
+            name: new FormControl(''),
+            mobile: new FormControl(''),
+            from: new FormControl(''),
+            to: new FormControl('')
+        }));
+    }
+
     ngOnInit() {
         this.entry = this.entryService.getEntryById(+this.activeRoute.snapshot.params['id'])
         this.hikeClasses = this.refData.getHikeClasses();
@@ -76,20 +121,7 @@ export class CreateEditEntryComponent {
             participants: this.buildParticipantFormArray()
         })
 
-        this.serviceForm = new FormArray([
-            new FormGroup({
-                name: new FormControl(''),
-                mobile: new FormControl(''),
-                from: new FormControl(''),
-                to: new FormControl('')
-            }),
-            new FormGroup({
-                name: new FormControl(''),
-                mobile: new FormControl(''),
-                from: new FormControl(''),
-                to: new FormControl('')
-            })
-        ])
+        this.serviceForm = this.buildSupportFormArray();
 
         this.contactForm = new FormGroup({
             adminContact: new FormGroup({
