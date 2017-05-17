@@ -1,8 +1,8 @@
 <form [formGroup]="entryForm"  (ngSubmit)="save(entryForm.value)" novalidate>
     <div class="row">
         <button type="submit" class="btn btn-primary">Save</button>
-        <button *ngIf="this.entry && isValidated()==false" type="button" class="btn" (click)="validateTeam()">Validate</button>
-        <button *ngIf="this.entry && isValidated()==true" type="button" class="btn" (click)="invalidateTeam()">Invalidate</button>
+        <button *ngIf="this.entry && isValidated()==false" type="button" class="btn" (click)="validateTeam()">Submit</button>
+        <button *ngIf="this.entry && isValidated()==true" type="button" class="btn" (click)="invalidateTeam()">UnSumbmit</button>
         <button *ngIf="this.entry" type="button" class="btn" (click)="delete()">Delete</button>
         <button type="button" class="btn" (click)="cancel()">Cancel</button>
 

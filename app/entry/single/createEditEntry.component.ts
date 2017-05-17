@@ -43,9 +43,9 @@ export class CreateEditEntryComponent {
 
     validatedString(): string {
         if (this.isValidated())
-            return 'Team Is Validated';
+            return 'Team Is Sumitted (so cant be changed)';
         else
-            return 'Team NOT Validated';
+            return 'Team NOT Submitted';
 
     }
 

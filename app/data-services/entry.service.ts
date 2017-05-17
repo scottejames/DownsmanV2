@@ -8,7 +8,7 @@ export class EntryService {
     }
 
     getEntryById(id: number): IEntry {
-        var e: any = ENTRIES.find(t => t.id === id);
+        let e: any = ENTRIES.find(t => t.id === id);
         return e;
     }
 
@@ -43,7 +43,7 @@ export class EntryService {
         ENTRIES = ENTRIES.filter(e => e.id != id);
     }
 
-    _getAllEntries(){
+    _getAllEntries() {
         return ENTRIES;
     }
 }
@@ -57,6 +57,234 @@ var ENTRIES: IEntry[] = [{
     prefStartTime: '10.00',
     team: {
         name: 'hatters',
+        group: '10th haywards heath',
+        district: 'mid sussex',
+        county: 'sussex',
+        standardMobile: '011111',
+        emergencyMobile: '100000',
+        participants: [{
+            name: 'Tom',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Dick',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Harry',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Joan',
+            dob: '1 Jan 2010',
+            gender: 'female'
+        }]
+    },
+    serviceCrew: [{
+        name: 'Fiona',
+        mobile: '999999',
+        from: 'start',
+        to: 'middle'
+    }, {
+        name: 'Joana',
+        mobile: '555555',
+        from: 'middle',
+        to: 'end'
+    }],
+    contactInfo: {
+        adminContact: {
+            name: 'Scott James',
+            address: '8 Harvesters',
+            telephone: '111111',
+            mobile: '999999',
+            email: 'scottejames@gmail.com'
+        },
+        emergencyContact: {
+            name: 'Anna James',
+            address: '9 Harvesters',
+            telephone: '2222222',
+            mobile: '333333333'
+        }
+    }
+}, {
+    id: 2,
+    ownerId: 1,
+    validated: false,
+    class: 'Downsman Open',
+    prefStartTime: '10.00',
+    team: {
+        name: 'Frindge',
+        group: '10th haywards heath',
+        district: 'mid sussex',
+        county: 'sussex',
+        standardMobile: '011111',
+        emergencyMobile: '100000',
+        participants: [{
+            name: 'Tom',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Dick',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Harry',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Joan',
+            dob: '1 Jan 2010',
+            gender: 'female'
+        }]
+    },
+    serviceCrew: [{
+        name: 'Fiona',
+        mobile: '999999',
+        from: 'start',
+        to: 'middle'
+    }, {
+        name: 'Joana',
+        mobile: '555555',
+        from: 'middle',
+        to: 'end'
+    }],
+    contactInfo: {
+        adminContact: {
+            name: 'Scott James',
+            address: '8 Harvesters',
+            telephone: '111111',
+            mobile: '999999',
+            email: 'scottejames@gmail.com'
+        },
+        emergencyContact: {
+            name: 'Anna James',
+            address: '9 Harvesters',
+            telephone: '2222222',
+            mobile: '333333333'
+        }
+    }
+}, {
+    id: 3,
+    ownerId: 1,
+    validated: false,
+    class: 'Downsman Open',
+    prefStartTime: '10.00',
+    team: {
+        name: 'Gulls',
+        group: '10th haywards heath',
+        district: 'mid sussex',
+        county: 'sussex',
+        standardMobile: '011111',
+        emergencyMobile: '100000',
+        participants: [{
+            name: 'Tom',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Dick',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Harry',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Joan',
+            dob: '1 Jan 2010',
+            gender: 'female'
+        }]
+    },
+    serviceCrew: [{
+        name: 'Fiona',
+        mobile: '999999',
+        from: 'start',
+        to: 'middle'
+    }, {
+        name: 'Joana',
+        mobile: '555555',
+        from: 'middle',
+        to: 'end'
+    }],
+    contactInfo: {
+        adminContact: {
+            name: 'Scott James',
+            address: '8 Harvesters',
+            telephone: '111111',
+            mobile: '999999',
+            email: 'scottejames@gmail.com'
+        },
+        emergencyContact: {
+            name: 'Anna James',
+            address: '9 Harvesters',
+            telephone: '2222222',
+            mobile: '333333333'
+        }
+    }
+}, {
+    id: 4,
+    ownerId: 1,
+    validated: false,
+    class: 'Downsman Open',
+    prefStartTime: '10.00',
+    team: {
+        name: 'Doomed',
+        group: '10th haywards heath',
+        district: 'mid sussex',
+        county: 'sussex',
+        standardMobile: '011111',
+        emergencyMobile: '100000',
+        participants: [{
+            name: 'Tom',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Dick',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Harry',
+            dob: '1 Jan 2010',
+            gender: 'male'
+        }, {
+            name: 'Joan',
+            dob: '1 Jan 2010',
+            gender: 'female'
+        }]
+    },
+    serviceCrew: [{
+        name: 'Fiona',
+        mobile: '999999',
+        from: 'start',
+        to: 'middle'
+    }, {
+        name: 'Joana',
+        mobile: '555555',
+        from: 'middle',
+        to: 'end'
+    }],
+    contactInfo: {
+        adminContact: {
+            name: 'Scott James',
+            address: '8 Harvesters',
+            telephone: '111111',
+            mobile: '999999',
+            email: 'scottejames@gmail.com'
+        },
+        emergencyContact: {
+            name: 'Anna James',
+            address: '9 Harvesters',
+            telephone: '2222222',
+            mobile: '333333333'
+        }
+    }
+    },{
+    id: 5,
+    ownerId: 3,
+    validated: false,
+    class: 'Downsman Open',
+    prefStartTime: '10.00',
+    team: {
+        name: 'SomeOneElse',
         group: '10th haywards heath',
         district: 'mid sussex',
         county: 'sussex',
