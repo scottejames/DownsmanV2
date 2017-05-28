@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {IEntry} from './entry.model'
 import {UserService} from "./user.service";
+import {IUser} from "./user.model";
 @Injectable()
 export class EntryService {
     constructor(private userService: UserService) {
@@ -12,11 +13,11 @@ export class EntryService {
         return e;
     }
 
-    getEntries(): IEntry[] {
-        if (this.userService.getCurrentUser() == null)
+    getEntries(organiser: IUser): IEntry[] {
+        if (organiser == null)
             return null;
         else
-            return ENTRIES.filter(e => e.ownerId === this.userService.getCurrentUser().id);
+            return ENTRIES.filter(e => e.ownerId === organiser.id);
     }
 
     addEntry(entry: IEntry) {

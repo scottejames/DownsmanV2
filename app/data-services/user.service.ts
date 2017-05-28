@@ -50,16 +50,19 @@ const USERS :IUser[]= [
     {
         id: 1,
         userName: 'scottejames',
+        admin: true,
         firstName: 'Scott',
         lastName: 'James'
     }, {
         id: 2,
         userName: 'bethmjames',
+        admin: false,
         firstName: 'Bethany',
         lastName: 'James'
     }, {
         id: 3,
         userName: 'chrissearle',
+        admin: true,
         firstName: 'Chris',
         lastName: 'Searle'
     }

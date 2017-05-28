@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core'
 import {EntryService, IEntry} from '../../data-services/index'
+import {UserService} from "../../data-services/user.service";
 
 @Component({
     template: `
@@ -19,10 +20,10 @@ import {EntryService, IEntry} from '../../data-services/index'
 export class EntryListComponent implements OnInit {
     entries: IEntry[]
 
-    constructor(private entryService: EntryService) {
+    constructor(private entryService: EntryService, private userService : UserService) {
     }
 
     ngOnInit() {
-        this.entries = this.entryService.getEntries();
+        this.entries = this.entryService.getEntries(this.userService.getCurrentUser());
     }
 }
