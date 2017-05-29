@@ -12,7 +12,12 @@
                 <li>
                     <a [routerLink] = "['/createEntry']" routerLinkActive="active">Create Entry</a>
                 </li>
-
+                <li *ngIf="userService.currentUserIsAdmin()">
+                    <a [routerLink] = "['/todo']" routerLinkActive="active"> Todo </a>
+                </li>
+                <li *ngIf="userService.currentUserIsAdmin()">
+                    <a [routerLink] = "['/admin']" routerLinkActive="active"> Admin </a>
+                </li>
             </ul>
             <div class="navbar-header navbar-right">
                 <ul class="nav navbar-nav">

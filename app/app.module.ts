@@ -24,6 +24,8 @@ import {LoginComponent} from "./user/login.component";
 import {ProfileComponent} from "./user/profile.component";
 import {LoggedInActivator} from "./entry/single/loggedInActivtor.service";
 import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.service";
+import {TodoListComponent} from "./todo/todoList.component";
+import {TodoService} from "./data-services/todo.service";
 
 @NgModule({
     imports: [
@@ -42,7 +44,8 @@ import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.serv
         EntryListComponent,
         DebugComponent,
         LoginComponent,
-        ProfileComponent
+        ProfileComponent,
+        TodoListComponent
     ],
     providers: [
         TeamRouteActivator,
@@ -50,7 +53,9 @@ import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.serv
         EntryNotOwnerActivator,
         UserService,
         EntryService,
-        RefDataService
+        RefDataService,
+        TodoService
+
     ],
     bootstrap: [DownsmanAppComponent]
 

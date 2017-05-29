@@ -14,6 +14,7 @@ export class EntryService {
     }
 
     getEntries(organiser: IUser): IEntry[] {
+        console.log('getting entries for ' + organiser.userName)
         if (organiser == null)
             return null;
         else

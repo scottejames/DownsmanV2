@@ -26,7 +26,12 @@ export class UserService {
     getCurrentUser(){
         return this.currentUser;
     }
-
+    currentUserIsAdmin(){
+        if (this.currentUser == null)
+            return false;
+        else
+            return this.currentUser.admin;
+    }
     loginUser(userName: string, password: string) {
         // Check password later.
         this.currentUser = this.getUserByUserName(userName);

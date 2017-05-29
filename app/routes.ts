@@ -15,6 +15,7 @@ import {LoginComponent} from "./user/login.component";
 import {ProfileComponent} from "./user/profile.component";
 import {LoggedInActivator} from "./entry/single/loggedInActivtor.service";
 import {EntryNotOwnerActivator} from "./entry/single/entryNotOwnerActivator.service";
+import {TodoListComponent} from "./todo/todoList.component";
 
 export const appRoutes: Routes = [
     {path: '404',               component: Error404Component},
@@ -23,7 +24,7 @@ export const appRoutes: Routes = [
     {path: 'viewEntry/:id',     component: CreateEditEntryComponent,canActivate: [EntryNotOwnerActivator,LoggedInActivator,TeamRouteActivator]},
     {path: 'createEntry',       component: CreateEditEntryComponent,canActivate: [LoggedInActivator]},
     {path: 'debug',             component: DebugComponent},
-
+    {path: 'todo',              component: TodoListComponent},
     {path: 'user/login',        component: LoginComponent},
     {path: 'user/profile',      component: ProfileComponent,canActivate: [LoggedInActivator]},
 

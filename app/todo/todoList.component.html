@@ -1,0 +1,40 @@
+<div>
+    <h1>Todo List </h1>
+    <form [formGroup]="todoForm" (ngSubmit)="save(todoForm.value)" novalidate>
+        <div classs="col-md-12">
+
+            <label for="name" class="col-md-2 ">Name: </label>
+            <label for="description" class="col-md-4"> Description: </label>
+            <label for="when" class="col-md-1"> When: </label>
+            <label for="coordinator" class="col-md-2"> Coordinator: </label>
+            <label for="targetDate" class="col-md-2"> Target date: </label>
+            <label for="completed" class="col-md-1"> Completed: </label>
+
+
+        </div>
+        <fieldSet formArrayName="todoList">
+
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <input formControlName="name" id="name" type="text" class="form-control"/>
+                </div>
+                <div class="col-md-4">
+                    <input formControlName="description" id="description" type="text" class="form-control"/>
+                </div>
+                <div class="col-md-1">
+                    <input formControlName="when" id="when" type="text" class="form-control"/>
+                </div>
+                <div class="col-md-2">
+                    <input formControlName="coordinator" id="coordinator" type="text" class="form-control"/>
+                </div>
+                <div class="col-md-2">
+                    <input formControlName="targetDate" id="targetDate" type="text" class="form-control"/>
+                </div>
+                <div class="col-md-1">
+                    <input formControlName="completed" id="completed" type="text" class="form-control"/>
+                </div>
+            </div>
+        </fieldSet>
+
+    </form>
+</div>
