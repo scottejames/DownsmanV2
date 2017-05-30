@@ -16,7 +16,14 @@ export class UserService {
         var user:any =  USERS.find(t => t.id === id);
         return user;
     }
+    isValidUserName(userName:string){
+        if (this.getUserByUserName(userName)!=null){
+            return true;
+        } else{
+            return false;
+        }
 
+    }
     getUserByUserName(userName: string) {
         var user :any;
         user = USERS.find(user => user.userName === userName);

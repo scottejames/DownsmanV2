@@ -13,7 +13,12 @@ export class LoginComponent{
 
     }
     login(formValues){
-        this.userService.loginUser(formValues.userName, formValues.password)
-        this.router.navigate(['entries'])
+        if (this.userService.isValidUserName(formValues.userName)) {
+            this.userService.loginUser(formValues.userName, formValues.password)
+            this.router.navigate(['entries'])
+        } else {
+            alert("User name not valid try again")
+        }
+
     }
 }
