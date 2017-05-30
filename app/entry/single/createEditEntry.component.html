@@ -68,22 +68,22 @@
                 <div
                         *ngFor="let participant of entryForm.get('team.participants').controls; let l=index"
                         [formGroup]="participant">
-                    <label for="'name'+l" class="col-md-1"> Name </label>
+                    <label for="name+{{l}}" class="col-md-1"> Name </label>
                     <div class="col-md-3">
 
-                        <input formControlName="name" id="'name'+l" type="text" class="form-control"
+                        <input formControlName="name" id="name+{{l}}" type="text" class="form-control"
                                placeholder="Entrants Name..."/>
                     </div>
 
-                    <label for="'dob'+l" class="col-md-1"> Date of birth </label>
+                    <label for="dob+{{l}}" class="col-md-1"> Date of birth </label>
                     <div class="col-md-3">
 
-                        <input formControlName="dob" id="'dob'+l" type="date" class="form-control"
+                        <input formControlName="dob" id="dob+{{l}}" type="date" class="form-control"
                                placeholder="Entrants Date of Birth..."/>
                     </div>
-                    <label for="'gender'+l" class="col-md-1  padding:10px"> Gender </label>
+                    <label for="gender+{{l}}" class="col-md-1  padding:10px"> Gender </label>
                     <div class="col-md-2">
-                        <select formControlName="gender" required id="'gender'+l" type="text" class="form-control">
+                        <select formControlName="gender" required id="gender+{{l}}" type="text" class="form-control">
                             <option *ngFor="let g of refData.getGenderList()" value="{{g}}">{{g}}</option>
                         </select>
                     </div>
@@ -120,30 +120,30 @@
 
                 <div *ngFor="let crew of entryForm.get('serviceCrew').controls; let i=index"
                      [formGroup]="crew">
-                    <label for="'SCname'+i" class="col-md-1"> Name </label>
+                    <label for="SCname+{{i}}" class="col-md-1"> Name </label>
                     <div class="col-md-2">
 
-                        <input formControlName="name" id="'SCname'+i" type="text" class="form-control"
+                        <input formControlName="name" id="SCname+{{i}}" type="text" class="form-control"
                                placeholder="Support Crew Name..."/>
                     </div>
-                    <label for="'SCmobile'+i" class="col-md-1"> Mobile </label>
+                    <label for="SCmobile+{{i}}" class="col-md-1"> Mobile </label>
                     <div class="col-md-2">
 
-                        <input formControlName="mobile" id="'SCmobile'+i" type="text" class="form-control"
+                        <input formControlName="mobile" id="SCmobile+{{i}}" type="text" class="form-control"
                                placeholder="Support Crew Mobile..."/>
                     </div>
 
-                    <label for="'SCfrom'+i" class="col-md-1"> Supporting from where </label>
+                    <label for="SCfrom+{{i}}" class="col-md-1"> Supporting from where </label>
                     <div class="col-md-1">
 
-                        <input formControlName="from" id="'SCfrom'+i" type="text" class="form-control"
+                        <input formControlName="from" id="SCfrom+{{i}}" type="text" class="form-control"
                                placeholder="from..."/>
                     </div>
 
-                    <label for="'SCto'+i" class="col-md-1"> Supporting to where </label>
+                    <label for="SCto+{{i}}" class="col-md-1"> Supporting to where </label>
                     <div class="col-md-1">
 
-                        <input formControlName="to" id="'SCto'+i" type="text" class="form-control"
+                        <input formControlName="to" id="SCto+{{i}}" type="text" class="form-control"
                                placeholder="to..."/>
                     </div>
                     <button type="button" class="btn btn-default" (click)="removeSupport(i)">Del</button>

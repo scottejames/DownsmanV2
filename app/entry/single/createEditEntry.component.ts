@@ -195,6 +195,8 @@ export class CreateEditEntryComponent {
         // if team is validated disable editing
         if (this.entry && this.entry.validated == true)
             this.entryForm.disable();
+
+        console.log(this.entryForm)
     }
 
     createParticantFormGroup() {

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core'
-import {ITodo, TodoList} from "../data-services/todo.model";
+import {ITodo} from "../data-services/todo.model";
 import {FormGroup, FormControl, FormArray} from "@angular/forms";
 import {TodoService} from "../data-services/todo.service";
+import {RefDataService} from "../data-services/refData.service";
 
 @Component({
     templateUrl: '/app/todo/todoList.component.html',
@@ -9,42 +10,62 @@ import {TodoService} from "../data-services/todo.service";
 
 export class TodoListComponent implements OnInit {
     todoForm: FormGroup;
-    todoListControls: FormArray;
-    todoList: TodoList;
+    todoListFormArray: FormArray;
+    todos: ITodo[];
 
-    constructor(private todoService: TodoService) {
+    constructor(private todoService: TodoService, private refData: RefDataService) {
     }
 
     ngOnInit() {
-        this.todoList = this.todoService.getTodos();
-        this.todoListControls = new FormArray([]);
+        this.todos = this.todoService.getTodos();
+        this.todoListFormArray = new FormArray([]);
 
-        for (let todo of this.todoList.todoList) {
-            console.log(todo);
+        if (this.todos) {
 
-            var group = new FormGroup({
-                id: new FormControl(),
-                name: new FormControl(),
+            for (let i of this.todos)
+                this.todoListFormArray.push(new FormGroup({
+                    id: new FormControl(i.id),
+                    name: new FormControl(i.name),
+                    description: new FormControl(i.description),
+                    when: new FormControl(i.when),
+                    coordinator: new FormControl(i.coordinator),
+                    targetDate: new FormControl(i.targetDate),
+                    completed: new FormControl(i.completed)
+                }));
+        } else {
+            this.todoListFormArray.push(new FormGroup({
+                id: new FormControl(''),
+                name: new FormControl('name'),
                 description: new FormControl(),
                 when: new FormControl(),
                 coordinator: new FormControl(),
                 targetDate: new FormControl(),
-                completed: new FormControl(),
-            });
-            this.todoListControls.push(group);
+                completed: new FormControl()
+            }));
         }
 
-        this.todoForm = new FormGroup({
-            todoList: this.todoListControls
-        });
-        console.log(this.todoForm)
-        // // Setup defaul values if we have specified an entry, this means we are using the form to edit
-        // if (this.todoList)
-        //     this.todoForm.patchValue(this.todoList);
-    }
 
+        this.todoForm = new FormGroup({
+            todoList: this.todoListFormArray
+        });
+
+    }
+    addNew(){
+        this.todoListFormArray.push(new FormGroup({
+            id: new FormControl(''),
+            name: new FormControl(''),
+            description: new FormControl(),
+            when: new FormControl(),
+            coordinator: new FormControl(),
+            targetDate: new FormControl(),
+            completed: new FormControl()
+        }));
+    }
     save(todo: ITodo[]) {
         console.log(todo)
 
+    }
+    cancel(){
+        console.log('cancel');
     }
 }

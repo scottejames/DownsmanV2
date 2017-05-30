@@ -14,6 +14,9 @@ export class RefDataService {
   getCountyList(): string [] {
       return COUNTY;
   }
+  getTodoTime(): string [] {
+      return TODO_TIME;
+  }
 }
 const COUNTY: string [] = [
     'West Sussex'
@@ -43,3 +46,9 @@ const HIKE_CLASSES :string[]=[
     'Class V',
     'Downsman Open'
 ];
+
+const TODO_TIME : string []= [
+    'Pre',
+    'Post',
+    'N/a'
+]

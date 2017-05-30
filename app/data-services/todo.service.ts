@@ -1,4 +1,4 @@
-import {ITodo, TodoList} from "./todo.model";
+import {ITodo} from "./todo.model";
 
 
 // export interface ITodo{
@@ -13,18 +13,18 @@ import {ITodo, TodoList} from "./todo.model";
 //
 // }
 export class TodoService {
-    getTodos(): TodoList {
+    getTodos(): ITodo[] {
         return TODO;
     }
 
 }
-const TODO: TodoList = {
-    todoList: [
+const TODO: ITodo[] =
+    [
         {
             id: 1,
             name: 'todo1',
             description: 'do it',
-            when: "PostHike",
+            when: "Post",
             coordinator: "Scott James",
             targetDate: "November",
             completed: false,
@@ -33,7 +33,7 @@ const TODO: TodoList = {
             id: 2,
             name: 'todo2',
             description: 'do it do it',
-            when: "PostHike",
+            when: "Pre",
             coordinator: "Scott James",
             targetDate: "November",
             completed: true
@@ -42,7 +42,7 @@ const TODO: TodoList = {
             id: 3,
             name: 'todo3',
             description: 'do it',
-            when: "PostHike",
+            when: "Post",
             coordinator: "Scott James",
             targetDate: "November",
             completed: true,
@@ -51,11 +51,11 @@ const TODO: TodoList = {
             id: 4,
             name: 'todo4',
             description: 'do it',
-            when: "PostHike",
+            when: "N/a",
             coordinator: "Scott James",
             targetDate: "November",
             completed: false,
         }
     ]
-}
+
 

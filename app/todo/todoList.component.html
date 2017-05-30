@@ -1,40 +1,48 @@
 <div>
     <h1>Todo List </h1>
+
     <form [formGroup]="todoForm" (ngSubmit)="save(todoForm.value)" novalidate>
-        <div classs="col-md-12">
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn" (click)="addNew()">AddNew</button>
 
-            <label for="name" class="col-md-2 ">Name: </label>
-            <label for="description" class="col-md-4"> Description: </label>
-            <label for="when" class="col-md-1"> When: </label>
-            <label for="coordinator" class="col-md-2"> Coordinator: </label>
-            <label for="targetDate" class="col-md-2"> Target date: </label>
-            <label for="completed" class="col-md-1"> Completed: </label>
-
+            <button type="button" class="btn" (click)="cancel()">Cancel</button>
 
         </div>
         <fieldSet formArrayName="todoList">
+            <label class="col-md-2 ">Name: </label>
+            <label class="col-md-4"> Description: </label>
+            <label class="col-md-1"> When: </label>
+            <label class="col-md-2"> Coordinator: </label>
+            <label class="col-md-2"> Target date: </label>
+            <label class="col-md-1"> Completed: </label>
+            <div *ngFor="let todo of todoForm.get('todoList').controls; let l=index"
+                    [formGroup]="todo">
 
-            <div class="col-md-12">
+
                 <div class="col-md-2">
-                    <input formControlName="name" id="name" type="text" class="form-control"/>
+                    <input formControlName="name" id="name+{{l}}" type="text" class="form-control"/>
                 </div>
                 <div class="col-md-4">
-                    <input formControlName="description" id="description" type="text" class="form-control"/>
+                    <input formControlName="description" id="description+{{l}}" type="text" class="form-control"/>
                 </div>
+
                 <div class="col-md-1">
-                    <input formControlName="when" id="when" type="text" class="form-control"/>
+                    <select formControlName="when" required id="when+{{l}}" type="text" class="form-control">
+                        <option *ngFor="let g of refData.getTodoTime()" value="{{g}}">{{g}}</option>
+                    </select>
                 </div>
                 <div class="col-md-2">
-                    <input formControlName="coordinator" id="coordinator" type="text" class="form-control"/>
+                    <input formControlName="coordinator" id="coordinator+{{l}}" type="text" class="form-control"/>
                 </div>
                 <div class="col-md-2">
-                    <input formControlName="targetDate" id="targetDate" type="text" class="form-control"/>
+                    <input formControlName="targetDate" id="targetDate+{{l}}" type="text" class="form-control"/>
                 </div>
                 <div class="col-md-1">
-                    <input formControlName="completed" id="completed" type="text" class="form-control"/>
+                    <input formControlName="completed" id="completed+{{l}}" type="text" class="form-control"/>
                 </div>
+
             </div>
         </fieldSet>
-
     </form>
 </div>

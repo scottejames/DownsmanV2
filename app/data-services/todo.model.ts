@@ -9,6 +9,3 @@ export interface ITodo{
 
 }
 
-export interface TodoList{
-    todoList: ITodo[]
-}
